@@ -1,0 +1,143 @@
+.flipClock {
+  height: 40px;
+  margin: 10px 0;
+  .flipUnitContainer {
+    display: block;
+    float: left;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    -webkit-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    box-shadow: 0px 10px 10px -10px grey;
+    margin-right: 5px;
+    overflow: hidden;
+  }
+
+  .upperCard, .lowerCard {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+  }
+  .upperCard span, .lowerCard span ,.flipCard span{
+    font-size: 30px;
+    color: #9e9e9e;
+    font-weight: bold;
+  }
+
+  .upperCard {
+    align-items: flex-end;
+    margin-left: 0.5px;
+  }
+  .upperCard span {
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+
+  .lowerCard {
+    align-items: flex-start;
+  }
+  .lowerCard span {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .flipCard {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .flipCard.unfold {
+    top: 50%;
+    align-items: flex-start;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    background-color: #eeeeee;
+  }
+  .flipCard.unfold span {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .flipCard.fold {
+    top: 0%;
+    align-items: flex-end;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    background-color: #eeeeee;
+  }
+  .flipCard.fold span {
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+
+  .fold {
+    -webkit-animation: fold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: fold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .unfold {
+    -webkit-animation: unfold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: unfold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+}
+
+@-webkit-keyframes fold {
+  0% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes fold {
+  0% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+}
+@-webkit-keyframes unfold {
+  0% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
+@keyframes unfold {
+  0% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
